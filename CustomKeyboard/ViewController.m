@@ -21,6 +21,7 @@
 	CustomTextField *textField = [[CustomTextField alloc]initWithStr:CGRectMake(self.view.bounds.size.width/2, 10, 350, 70) str:@"ugoita-"];
 	textField.borderStyle = UITextBorderStyleRoundedRect;
 	[self.view addSubview:textField];
+
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -29,5 +30,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomTextField.h"
 
+
 @interface FIKey : UIButton
 
 @property (strong) NSArray *keyPair;
@@ -17,5 +18,6 @@
 
 - (id)initWithFrame:(CGRect)frame keyCode:(NSString *)keyCode index:(NSUInteger)index;
 - (id)changeIndex;
+- (id)changePresentKey:(NSString *)string;
 
 @end

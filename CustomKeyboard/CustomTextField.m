@@ -42,7 +42,7 @@ FIKey *rowKey[10];
 		//[customKeyboardView addSubview:compButton];
 		
 		
-		FIKey *key = [[FIKey alloc] initWithFrame:CGRectMake(10, 10, 60, 60) keyCode:@"a" index:0];
+		//FIKey *key = [[FIKey alloc] initWithFrame:CGRectMake(10, 10, 60, 60) keyCode:@"a" index:0];
 		//[key addTarget:self action:@selector(keytest:) forControlEvents:UIControlEventTouchUpInside];
 		//[customKeyboardView addSubview:key];
 		
@@ -91,12 +91,37 @@ FIKey *rowKey[10];
 		//[customKeyboardView addSubview:rowKey[i]];
 		[rowKey[i] changeIndex];
 	}
-	
+	if(sender.index == 0){
+		temp_string = sender.presentKey;
+		NSLog(temp_string);
+		NSMutableString *_string = [self.text mutableCopy];
+		NSLog(_string);
+		self.text = [self changeString:_string];
+	}
+	/*else{
+		NSString *temp = [self changeString:[temp_string stringByAppendingString:sender.presentKey]];
+		for(int i=0; i<10; i++){
+			[rowKey[i] changePresentKey:temp];
+		}
+	}
+	 */
 }
 
 
--(void)completeCurrentWord:(UIButton*)button{
-	self.text = [self.text stringByAppendingString:self.str];
+-(NSMutableString*)changeString:(NSMutableString *)str
+{
+	//NSMutableString* string =[[NSMutableString alloc] initWithFormat:@"kyoukaraoreha"];
+	NSMutableString *string = [NSMutableString stringWithString:str];
+	CFStringTransform((CFMutableStringRef)string, NULL, kCFStringTransformLatinHiragana, false);
+	return string;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)inputText{
+    // 入力後の文字列を取得することはできないため、入力前の文字列と入力された文字列をつなげる
+    NSMutableString *afterInputText = textField.text.mutableCopy;
+    [afterInputText replaceCharactersInRange:range withString:inputText];
+	CFStringTransform((__bridge CFMutableStringRef)afterInputText, NULL, kCFStringTransformLatinHiragana, NO);
+    return YES;
 }
 
 /*

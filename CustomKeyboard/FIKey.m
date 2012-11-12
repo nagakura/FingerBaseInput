@@ -56,6 +56,13 @@
 	
 }
 
+-(id)changePresentKey:(NSString *)string
+{
+	self.presentKey = string;
+	[self setTitle:string forState:UIControlStateNormal];
+	return self;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

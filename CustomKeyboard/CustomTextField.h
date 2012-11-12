@@ -18,9 +18,15 @@
 	int frameY[10];
 	NSString *path;
 	NSArray *keyPair;
+	
+	NSString *temp_string;
+	
 }
 
 -(id)initWithStr:(CGRect)frame str:(NSString *)str;
+-(NSMutableString*)changeString:(NSMutableString*)str;
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)inputText;
+
 @property (nonatomic) NSString *str;
 
 @end
